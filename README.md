@@ -1,2 +1,369 @@
 # 12project
 panda esmo shkoko 3D SHAPES 
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
+
+#include <stdlib.h>
+#include <windows.h>
+#include <math.h>
+//------------------------------  reshapeFunc  ---------------------------------
+
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
+
+#include <stdlib.h>
+#include <windows.h>
+#include <math.h>
+
+float xRotated = 90.0, yRotated = 0.0, zRotated = 0.0;
+float xx = 0 , yy = 0 , zz = 0;
+
+
+void reshapeFunc (int w, int h)
+{
+    glViewport(0,0,(GLsizei)w,(GLsizei)h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective (40.0, (GLdouble)w / (GLdouble)h, 0.5, 20.0);
+    glMatrixMode(GL_MODELVIEW);
+}
+float z=0;
+float x=0;
+float y=0;
+
+
+
+void shkoko(void){
+
+//right ears
+
+glPushMatrix();
+glColor3f (0.0, 0.0,0.0);
+glTranslatef  (1.2+x,4.5,-2.3);
+glutSolidSphere(0.6,23,20);
+ glPopMatrix();
+
+//left ears
+glPushMatrix();
+glColor3f (0.0, 0.0,0.0);
+glTranslatef  (-1.2+x,4.5,-2.3);
+glutSolidSphere(0.6,23,20);
+ glPopMatrix();
+//righthand
+
+glPushMatrix();
+glColor3f (0.0, 0.0,0.0);
+glTranslatef  (1.8+x,0.5,-2.3);
+glutSolidSphere(0.5,23,20);
+glPopMatrix();
+glPushMatrix();
+glColor3f (0.0, 0.0,0.0);
+glTranslatef  (2.4+x,0.5,-2.3);
+glutSolidSphere(0.4,23,20);
+glPopMatrix();
+//lefthand
+glPushMatrix();
+glColor3f (0.0, 0.0,0.0);
+glTranslatef(-2.0+x,0.5,-2.3);
+glutSolidSphere(0.5,23,20);
+glPopMatrix();
+glPushMatrix();
+glColor3f (0.0, 0.0,0.0);
+glTranslatef  (-2.4+x,0.5,-2.3);
+glutSolidSphere(0.4,23,20);
+glPopMatrix();
+//rightleg
+glPushMatrix();
+glColor3f (0.0, 0.0,0.0);
+glTranslatef(1.0+x,-1.5,-2.3);
+glutSolidSphere(0.5,23,20);
+glPopMatrix();
+//leftleg
+glPushMatrix();
+glColor3f (0.0, 0.0,0.0);
+glTranslatef(-1.0+x,-1.5,-2.3);
+glutSolidSphere(0.5,23,20);
+glPopMatrix();
+
+
+
+//right eye
+glPushMatrix();
+glColor3f (0.0, 0.0,0);
+glTranslatef  (0.8+x, 3.0, -1);
+glutSolidSphere(0.2, 20,20);
+ glPopMatrix();
+ //left eye
+glPushMatrix();
+glColor3f (0.0, 0.0,0);
+glTranslatef  (-0.5+x, 3.0, -1);
+glutSolidSphere(0.2, 20,20);
+ glPopMatrix();
+ //nose
+ glPushMatrix();
+glColor3f (0.0, 0.0,0);
+glTranslatef  (0.1+x,2.4,1);
+glutSolidSphere(0.2, 20,20);
+ glPopMatrix();
+ //mouth
+
+glPushMatrix();
+ glColor3f(0,0,0);
+ glTranslatef(0.1+x,2.3,-0.8);
+ glScalef(2,0.1,0.3);
+ glutSolidCube(0.5);
+ glPopMatrix();
+
+//face
+glPushMatrix();
+glColor3f (1.0, 1.0,1.0);
+glTranslatef  (0.0, 3.0, -2.4);
+glutSolidSphere(1.6, 20,20);
+ glPopMatrix();
+
+//body
+
+glLineWidth(3);
+glBegin(GL_POLYGON);
+glTranslatef(0.0+x,-9.3,0.0);
+glColor3f(1.0,1.0,1.0);
+for(int i=0;i<360;i++){
+    float angle=i*3.14/180;
+     glVertex3f(1.5*cos(angle),1.5*sin(angle),1.0);
+
+}
+glEnd();
+//body
+glPushMatrix();
+glTranslatef(0.0+x, 0.3, -2.4);
+glColor3f (1.0, 1.0,1.0);
+glutSolidSphere(2.0, 23 ,23);
+
+
+glPopMatrix();
+
+
+}
+
+float step=0;
+void notbuiltin(void){
+glPushMatrix();
+glColor3f (1.0, 0.4,0.4);
+glTranslatef  (1.2,5.5,-2.3);
+glutSolidSphere(0.6 +step,23,20);
+ glPopMatrix();
+
+glPushMatrix();
+glColor3f (1.0, 0.4,0.4);
+glTranslatef  (-6.2,5.5,-2.3);
+glutSolidSphere(0.6+step,23,20);
+ glPopMatrix();
+
+}
+void builtin (void){
+    //first cube
+    glTranslatef(-3.0,-1.0,1.0);
+     glBegin (GL_QUADS) ;
+    glColor3f(1,0.0,0.0);
+    glVertex3f(-1.0,1.0,1.0);
+    glVertex3f(-1.0,-1.0,1.0);
+    glVertex3f(1.0,-1.0,1.0);
+    glVertex3f(1.0,1.0,1.0);
+
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(1.0,1.0,-1.0);
+    glVertex3f(1.0,-1.0,-1.0);
+    glVertex3f (-1.0,-1.0,-1.0);
+    glVertex3f(-1.0,1.0,-1.0);
+
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(1.0,1.0,1.0);
+    glVertex3f(1.0,-1.0,1.0);
+    glVertex3f(1.0,-1.0,-1.0);
+    glVertex3f(1.0,1.0,-1.0);
+
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-1.0,1.0,-1.0);
+    glVertex3f(-1.0,-1.0,-1.0);
+    glVertex3f(-1.0,-1.0,1.0);
+    glVertex3f(-1.0,1.0,1.0);
+
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f (-1.0,1.0,-1.0);
+    glVertex3f (-1.0,1.0,1.0);
+    glVertex3f(1.0,1.0,1.0);
+    glVertex3f(1.0,1.0,-1.0);
+
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f (-1.0,-1.0,-1.0);
+    glVertex3f(-1.0,-1.0,1.0);
+    glVertex3f(1.0,-1.0,1.0);
+    glVertex3f(1.0,-1.0,-1.0);
+
+    glEnd();
+    //second cube
+glTranslatef(6.0,0.0,1.0);
+     glBegin (GL_QUADS) ;
+    glColor3f(1.0,0.0,1.0);
+    glVertex3f(-1.0,1.0,1.0);
+    glVertex3f(-1.0,-1.0,1.0);
+    glVertex3f(1.0,-1.0,1.0);
+    glVertex3f(1.0,1.0,1.0);
+
+    glColor3f(1.0,0.0,1.0);
+    glVertex3f(1.0,1.0,-1.0);
+    glVertex3f(1.0,-1.0,-1.0);
+    glVertex3f (-1.0,-1.0,-1.0);
+    glVertex3f(-1.0,1.0,-1.0);
+
+    glColor3f(1.0,0.0,1.0);
+    glVertex3f(1.0,1.0,1.0);
+    glVertex3f(1.0,-1.0,1.0);
+    glVertex3f(1.0,-1.0,-1.0);
+    glVertex3f(1.0,1.0,-1.0);
+
+    glColor3f(1.0,0.0,1.0);
+    glVertex3f(-1.0,1.0,-1.0);
+    glVertex3f(-1.0,-1.0,-1.0);
+    glVertex3f(-1.0,-1.0,1.0);
+    glVertex3f(-1.0,1.0,1.0);
+
+    glColor3f(1.0,0.0,1.0);
+    glVertex3f (-1.0,1.0,-1.0);
+    glVertex3f (-1.0,1.0,1.0);
+    glVertex3f(1.0,1.0,1.0);
+    glVertex3f(1.0,1.0,-1.0);
+
+    glColor3f(1.0,0.0,1.0);
+    glVertex3f (-1.0,-1.0,-1.0);
+    glVertex3f(-1.0,-1.0,1.0);
+    glVertex3f(1.0,-1.0,1.0);
+    glVertex3f(1.0,-1.0,-1.0);
+
+    glEnd();
+
+
+}
+
+
+//int zRotated=0;
+
+//------------------------------  display   -------------------------------
+void display (void)
+{
+
+    glClear        (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity ();
+    glTranslatef    (0.0 + xx , 0.0 + yy , -15.0 + zz);
+
+    //code
+
+    shkoko();
+    builtin();
+    notbuiltin();
+glutSwapBuffers();
+
+}
+//--------------------------------  idleFunc  ----------------------------------
+
+void idleFunc (void)
+{
+    zRotated += 1;
+    glutPostRedisplay();
+}
+
+void texture (void){
+
+const GLfloat light_ambient[]  = { 0.0f, 0.0f, 0.0f, 1.0f };
+const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+const GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+const GLfloat light_position[] = { 2.0f, 5.0f, 5.0f, 0.0f };
+
+const GLfloat mat_ambient[]    = { 0.7f, 0.7f, 0.7f, 1.0f };
+const GLfloat mat_diffuse[]    = { 0.8f, 0.8f, 0.8f, 1.0f };
+const GLfloat mat_specular[]   = { 1.0f, 1.0f, 1.0f, 1.0f };
+const GLfloat high_shininess[] = { 100.0f };
+
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+
+    glEnable(GL_LIGHT0);
+    glEnable(GL_NORMALIZE);
+    glEnable(GL_COLOR_MATERIAL);
+    glEnable(GL_LIGHTING);
+
+    glLightfv(GL_LIGHT0, GL_AMBIENT,  light_ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE,  light_diffuse);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+
+    glMaterialfv(GL_FRONT, GL_AMBIENT,   mat_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE,   mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR,  mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
+
+
+}//-------------------------------mouse input----------------
+void processNormalKeys(unsigned char key, int x, int y) {
+
+	if (key == 27)
+		exit(0);
+}
+
+void processSpecialKeys(int key, int x, int y) {
+
+	switch(key) {
+		case GLUT_KEY_LEFT:
+				xx += 0.5;
+                yy += 0;
+                zz -= 0;
+				break;
+		case GLUT_KEY_RIGHT:
+                xx -= 0.5;
+                yy += 0;
+                zz -= 0;
+				break;
+	}
+}
+//-------------------------------animation-------------
+void timer(int)
+{
+    glutPostRedisplay();
+    glutTimerFunc(1000/10,timer,0);
+	step+=0.5;
+
+
+}
+
+
+//----------------------------------  main  ------------------------------------
+
+
+int main (int argc, char **argv)
+{
+    glutInit               (&argc, argv);
+    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+    glutInitWindowSize     (800, 700);
+    glutInitWindowPosition (700, 200);
+    glutCreateWindow       ("RanaHisham 20109619");
+
+    glClearColor (0.0, 0.0, 1.0, 0.4);
+
+    glutDisplayFunc (display);
+    glutReshapeFunc (reshapeFunc);
+    glutIdleFunc    (idleFunc);
+    glutTimerFunc(0,timer,0);
+
+
+glutKeyboardFunc(processNormalKeys);
+glutSpecialFunc(processSpecialKeys);
+
+    glClearColor(1,1,1,1);
+    texture();
+    glutMainLoop();
+}
